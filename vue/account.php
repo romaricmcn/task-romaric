@@ -1,36 +1,30 @@
 <?php include 'header.php'; ?>
 
 <section>
-    <h2>Créer un compte utilisateur</h2>
+    <h2>Se connecter</h2>
     <form action="accountController.php" method="POST">
-        <label for="lastname">Nom :</label>
-        <input type="text" name="lastname" required>
-
-        <label for="firstname">Prénom :</label>
-        <input type="text" name="firstname" required>
-
         <label for="email">Email :</label>
         <input type="email" name="email" required>
 
         <label for="password">Mot de passe :</label>
         <input type="password" name="password" required>
 
-        <button type="submit" name="create_account">Créer le compte</button>
+        <button type="submit" name="connect">Se connecter</button>
     </form>
-    
-    <p><?php if (isset($_SESSION['message'])) { echo $_SESSION['message']; unset($_SESSION['message']); } ?></p>
-</section>
 
+    <h1>Inscription</h1>
+    <form action="" method="post">
+        <input type="text" name="lastname" placeholder="Le Nom de Famille">
+        <input type="text" name="firstname" placeholder="Le Prénom">
+        <input type="text" name="email" placeholder="L'Email'">
+        <input type="password" name="password" placeholder="Le Mot de Passe">
+        <input type="submit" name="submitSignUp">
+    </form>
+    <p><?php echo $message ?></p>
+</section>
 <section>
-    <h2>Liste des comptes utilisateurs</h2>
-    <table border="1">
-        <tr>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Email</th>
-        </tr>
-        <?php include 'accountController.php'; echo displayUsers(); ?>
-    </table>
+    <h1>Liste d'Utilisateurs</h1>
+    <ul>
+        <?php echo $listUsers ?>
+    </ul>
 </section>
-
-<?php include 'footer.php'; ?>

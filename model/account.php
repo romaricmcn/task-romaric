@@ -65,7 +65,7 @@ function deleteAccount(PDO $bdd, string $email): void {
  * @param string $email
  * @return ?array acount [id, firstname, lastname, email]
  */
-function getAccountByEmail(PDO $bdd, string $email): ?array {
+function getAccountByEmail(PDO $bdd, string $email): array|null|string {
     try {
         $requete = "SELECT id_account, firstname, lastname, email FROM account
         WHERE email = ?";
@@ -84,7 +84,7 @@ function getAccountByEmail(PDO $bdd, string $email): ?array {
  * @param PDO $bdd
  * @return ?array acount [id, firstname, lastname, email]
  */
-function getAllAccount(PDO $bdd): ?array{
+function getAllAccount(PDO $bdd): array|null|string{
     try {
         $requete = "SELECT id_account, firstname, lastname, email FROM account";
         $req = $bdd->prepare($requete);
